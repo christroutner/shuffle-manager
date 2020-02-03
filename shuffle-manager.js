@@ -7,9 +7,9 @@
 const ElectronCash = require('./lib/ec')
 const electronCash = new ElectronCash()
 
-setInterval(function() {
-  checkWallet()
-}, 30000)
+// setInterval(function() {
+//   checkWallet()
+// }, 30000)
 checkWallet()
 
 
@@ -19,8 +19,8 @@ async function checkWallet() {
     console.log(`data: ${JSON.stringify(data,null,2)}`)
 
     // For each utxo found under the threshold, send it to the CashFusion wallet.
-    // for(let i=0; i < data.length; i++) {
-    for(let i=0; i < 1; i++) {
+    for(let i=0; i < data.length; i++) {
+    // for(let i=0; i < 1; i++) {
       const thisUtxo = data[i]
 
       const toAddr = await electronCash.getFusionAddr()
@@ -37,9 +37,15 @@ async function checkWallet() {
 
       console.log(`Sent utxo ${i}`)
       console.log(' ')
+
+      await sleep(5000)
     }
 
   } catch(err) {
     console.log(`Error in checkWallet(): `, err)
   }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
