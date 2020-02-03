@@ -4,7 +4,8 @@
   "description": "A daemon for sending small BCH coins to CashFusion for consolidation",
   "main": "shuffle-manager.js",
   "scripts": {
-    "test": "echo test"
+    "test": "echo test",
+    "start": "node shuffle-manager.js"
   },
   "keywords": [
     "bch",
