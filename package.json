@@ -1,0 +1,22 @@
+{
+  "name": "shuffle-manager",
+  "version": "1.0.0",
+  "description": "A daemon for sending small BCH coins to CashFusion for consolidation",
+  "main": "shuffle-manager.js",
+  "scripts": {
+    "test": "echo test"
+  },
+  "keywords": [
+    "bch",
+    "javascript",
+    "bitcoin",
+    "cash",
+    "bitcoin",
+    "CashShuffle",
+    "CashFusion",
+    "Electron",
+    "Cash"
+  ],
+  "author": "Chris Troutner <chris.troutner@gmail.com>",
+  "license": "MIT"
+}
