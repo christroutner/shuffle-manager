@@ -15,3 +15,5 @@ cd shuffle-manager
 npm install
 npm start
 ```
+## License
+MIT
