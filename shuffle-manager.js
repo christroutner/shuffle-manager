@@ -7,11 +7,20 @@
 const ElectronCash = require("./lib/ec");
 const electronCash = new ElectronCash();
 
+// Calculate a random time between 10 and 20 minutes.
+let randomTime = Math.floor(10 * 60000 * Math.random())
+randomTime += 10 * 60000
+
+// Run checkWallet() no a periodic basis.
 setInterval(function() {
   checkWallet()
-}, 60000 * 10)
+}, randomTime)
+
+// Run checkWallet() right away, at startup.
 checkWallet();
 
+// Check the wallet for UTXOs below the threshold, that should be transfered
+// to the CashFusion wallet to consolidate UTXOs.
 async function checkWallet() {
   try {
     const data = await electronCash.getSmallUtxos();
