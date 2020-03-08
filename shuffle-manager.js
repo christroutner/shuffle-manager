@@ -7,19 +7,24 @@
 const ElectronCash = require("./lib/ec");
 const electronCash = new ElectronCash();
 
-// setInterval(function() {
-//   checkWallet()
-// }, 30000)
+setInterval(function() {
+  checkWallet()
+}, 60000 * 10)
 checkWallet();
 
 async function checkWallet() {
   try {
     const data = await electronCash.getSmallUtxos();
-    console.log(`data: ${JSON.stringify(data, null, 2)}`);
+    // console.log(`data: ${JSON.stringify(data, null, 2)}`);
+    console.log(`There are ${data.length} UTXOs to transfer.`)
+    console.log(' ')
+
+    // Exit if there are no UTXOs to transfer.
+    if(data.length < 1) return
 
     // For each utxo found under the threshold, send it to the CashFusion wallet.
-    for (let i = 0; i < data.length; i++) {
-      // for(let i=0; i < 1; i++) {
+    // for (let i = 0; i < data.length; i++) {
+      for(let i=0; i < 1; i++) {
       const thisUtxo = data[i];
 
       const toAddr = await electronCash.getFusionAddr();
